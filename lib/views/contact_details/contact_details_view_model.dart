@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trinity_wizard/services/storage/dto/user_dto.dart';
 import 'package:trinity_wizard/services/user/user_service.dart';
@@ -23,13 +24,40 @@ class ContactDetailsViewModel extends GetxController {
     );
   }
 
-  void updateContact({
+  Future<void> updateContact({
     required String id,
     required String firstName,
     required String lastName,
     required String email,
     required String dob,
-  }) {
+  }) async {
+    if (firstName.isEmpty || lastName.isEmpty) {
+      await Get.defaultDialog(
+        title: 'Error',
+        middleText: 'First Name and Last Name are required',
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Get.back(),
+            child: const Text('OK'),
+          ),
+        ],
+      );
+      return;
+    }
+    const String emailPattern = r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$';
+    if (!RegExp(emailPattern).hasMatch(email)) {
+      await Get.defaultDialog(
+        title: 'Error',
+        middleText: 'Invalid email',
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Get.back(),
+            child: const Text('OK'),
+          ),
+        ],
+      );
+      return;
+    }
     _userService.updateUser(
       id: id,
       firstName: firstName,
