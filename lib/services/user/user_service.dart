@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
+import 'package:fuzzy/data/result.dart';
+import 'package:fuzzy/fuzzy.dart';
 import 'package:get/get.dart';
 import 'package:trinity_wizard/services/storage/dto/user_dto.dart';
 
@@ -20,5 +22,41 @@ class UserService extends GetxService {
     return _users.firstWhereOrNull(
       (UserDto user) => user.id == credential || user.email == credential,
     );
+  }
+
+  List<UserDto> getUsers({
+    required String searchTerm,
+  }) {
+    if (searchTerm.isEmpty) {
+      return _users.toList(growable: false);
+    }
+
+    final FuzzyOptions<UserDto> fuzzyOptions = FuzzyOptions<UserDto>(
+      threshold: .2,
+      keys: <WeightedKey<UserDto>>[
+        WeightedKey<UserDto>(
+          name: 'user.firstName',
+          getter: (UserDto x) => x.firstName,
+          weight: 1,
+        ),
+        WeightedKey<UserDto>(
+          name: 'user.lastName',
+          getter: (UserDto x) => x.lastName,
+          weight: 1,
+        ),
+        WeightedKey<UserDto>(
+          name: 'user.id',
+          getter: (UserDto x) => x.id,
+          weight: 1,
+        ),
+      ],
+    );
+    return Fuzzy<UserDto>(
+      _users,
+      options: fuzzyOptions,
+    )
+        .search(searchTerm)
+        .map((Result<UserDto> e) => e.item)
+        .toList(growable: false);
   }
 }

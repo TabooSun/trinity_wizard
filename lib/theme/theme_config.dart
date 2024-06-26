@@ -76,5 +76,6 @@ class ThemeConfig {
       fontWeight: FontWeight.w700,
       fontSize: 18,
     ),
+    surfaceTintColor: Colors.transparent,
   );
 }

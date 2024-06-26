@@ -40,7 +40,7 @@ class LoginViewModel extends GetxController {
     }
     await _storageService.prefs.setString(
       StorageKeyName.loggedInUserId,
-      credential,
+      userByIdOrEmail.id,
     );
 
     await Get.offAllNamed(

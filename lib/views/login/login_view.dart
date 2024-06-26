@@ -20,7 +20,7 @@ class _LoginViewState extends State<LoginView> {
     return const Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        children: <Widget>[
           SizedBox(
             height: 53,
           ),
@@ -29,7 +29,7 @@ class _LoginViewState extends State<LoginView> {
             child: Text.rich(
               TextSpan(
                 text: 'Hi There!\n',
-                children: [
+                children: <InlineSpan>[
                   TextSpan(
                     text: 'Please login to see your contact list',
                     style: TextStyle(
@@ -96,10 +96,10 @@ class _FormState extends State<_Form> {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        children: <Widget>[
           const Text.rich(
             TextSpan(
-              children: [
+              children: <InlineSpan>[
                 TextSpan(
                   text: 'Username ',
                   style: TextStyle(
@@ -142,7 +142,7 @@ class _FormState extends State<_Form> {
           ),
           const Text.rich(
             TextSpan(
-              children: [
+              children: <InlineSpan>[
                 TextSpan(
                   text: 'Password ',
                   style: TextStyle(
