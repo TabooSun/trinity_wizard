@@ -36,4 +36,20 @@ class UserDto {
       'dob': dob,
     };
   }
+
+  UserDto copyWith({
+    String? id,
+    String? firstName,
+    String? lastName,
+    String? email,
+    String? dob,
+  }) {
+    return UserDto(
+      id: id ?? this.id,
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
+      email: email ?? this.email,
+      dob: dob ?? this.dob,
+    );
+  }
 }

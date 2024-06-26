@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trinity_wizard/theme/app_colors.dart';
 import 'package:trinity_wizard/views/login/login_view_model.dart';
+import 'package:trinity_wizard/widgets/form_field_label.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({
@@ -97,28 +98,9 @@ class _FormState extends State<_Form> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const Text.rich(
-            TextSpan(
-              children: <InlineSpan>[
-                TextSpan(
-                  text: 'Username ',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.black,
-                    height: 21 / 14,
-                  ),
-                ),
-                TextSpan(
-                  text: '* ',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w200,
-                    color: Color(0xffED1C2E),
-                  ),
-                ),
-              ],
-            ),
+          const FormFieldLabel(
+            title: 'Username ',
+            isRequired: true,
           ),
           const SizedBox(
             height: 9,
@@ -140,28 +122,9 @@ class _FormState extends State<_Form> {
           const SizedBox(
             height: 22,
           ),
-          const Text.rich(
-            TextSpan(
-              children: <InlineSpan>[
-                TextSpan(
-                  text: 'Password ',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.black,
-                    height: 21 / 14,
-                  ),
-                ),
-                TextSpan(
-                  text: '* ',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w200,
-                    color: Color(0xffED1C2E),
-                  ),
-                ),
-              ],
-            ),
+          const FormFieldLabel(
+            title: 'Password ',
+            isRequired: true,
           ),
           const SizedBox(
             height: 9,

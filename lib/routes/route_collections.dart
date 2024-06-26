@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:trinity_wizard/views/contact_details/contact_details_view.dart';
+import 'package:trinity_wizard/views/contact_details/contact_details_view_model.dart';
 import 'package:trinity_wizard/views/home/home_view.dart';
 import 'package:trinity_wizard/views/home/home_view_model.dart';
 import 'package:trinity_wizard/views/login/login_view.dart';
@@ -11,6 +13,7 @@ class RouteName {
 
   static const String home = '/home';
   static const String login = '/login';
+  static const String contactDetails = '/contactDetails';
 }
 
 class RouteCollections {
@@ -45,19 +48,14 @@ class RouteCollections {
         );
       }),
     ),
-    /*GetPage<dynamic>(
-      name: RouteConstant.searchArticle,
-      page: () => const SearchArticleView(),
-      binding: BindingsBuilder<SearchArticleViewModel>(
-        () => Get.lazyPut(() => SearchArticleViewModel()),
-      ),
-    ),
     GetPage<dynamic>(
-      name: RouteConstant.articleList,
-      page: () => const ArticleListView(),
-      binding: BindingsBuilder<ArticleListViewModel>(
-        () => Get.lazyPut(() => ArticleListViewModel()),
-      ),
-    ),*/
+      name: RouteName.contactDetails,
+      page: () => const ContactDetailsView(),
+      binding: BindingsBuilder<ContactDetailsViewModel>(() {
+        Get.lazyPut<ContactDetailsViewModel>(
+          () => ContactDetailsViewModel(),
+        );
+      }),
+    ),
   ];
 }

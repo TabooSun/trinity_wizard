@@ -105,6 +105,11 @@ class _ContactItemState extends State<_ContactItem> {
         ),
       ),
       child: InkWell(
+        onTap: (){
+          vm.editContact(
+            contact: widget.contact,
+          );
+        },
         child: Column(
           children: <Widget>[
             const SizedBox(height: 12),

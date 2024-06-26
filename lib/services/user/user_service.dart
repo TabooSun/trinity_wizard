@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:trinity_wizard/services/storage/dto/user_dto.dart';
 
 class UserService extends GetxService {
-  late final List<UserDto> _users;
+  late List<UserDto> _users;
 
   Future<void> init() async {
     final String jsonString = await rootBundle.loadString('assets/data.json');
@@ -58,5 +58,29 @@ class UserService extends GetxService {
         .search(searchTerm)
         .map((Result<UserDto> e) => e.item)
         .toList(growable: false);
+  }
+
+  void removeUser({required String id}) {
+    _users = _users.where((UserDto user) => user.id != id).toList();
+  }
+
+  void updateUser({
+    required String id,
+    required String firstName,
+    required String lastName,
+    required String email,
+    required String dob,
+  }) {
+    _users = _users.map((UserDto user) {
+      if (user.id == id) {
+        return user.copyWith(
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          dob: dob,
+        );
+      }
+      return user;
+    }).toList();
   }
 }
