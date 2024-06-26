@@ -49,7 +49,7 @@ class _HomeViewState extends State<HomeView> {
         onTap: (int index) {
           _bottomNavigationBarIndex = index;
           setState(() {});
-          // _pageController.jumpToPage(index);
+          _pageController.jumpToPage(index);
         },
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
