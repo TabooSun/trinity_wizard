@@ -1,0 +1,5 @@
+import 'package:{{{importRoot}}}/{{name.snakeCase()}}_{{suffix.snakeCase()}}.dart';
+
+class {{#implementations}}{{implementations_key.pascalCase()}}{{/implementations}}{{name.pascalCase()}}{{suffix.pascalCase()}} extends {{name.pascalCase()}}{{suffix.pascalCase()}} {
+
+}
