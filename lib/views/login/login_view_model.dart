@@ -20,7 +20,7 @@ class LoginViewModel extends GetxController {
 
     if (userByIdOrEmail == null) {
       await showDialog(
-        context:Get.context!,
+        context: Get.context!,
         builder: (BuildContext context) {
           return AlertDialog(
             title: const Text('Error'),

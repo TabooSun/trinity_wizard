@@ -105,7 +105,7 @@ class _ContactItemState extends State<_ContactItem> {
         ),
       ),
       child: InkWell(
-        onTap: (){
+        onTap: () {
           vm.editContact(
             contact: widget.contact,
           );

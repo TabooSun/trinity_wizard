@@ -6,8 +6,7 @@ class RootBinding implements Bindings {
   const RootBinding();
 
   @override
-  void dependencies() {
-  }
+  void dependencies() {}
 }
 
 class AsyncRootBinding implements Bindings {
